@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables
 // import 'package:amplify_flutter/amplify_flutter.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -14,10 +13,13 @@ class Homepage extends StatefulWidget {
 
 class _HomepageState extends State<Homepage> {
   List data = [];
+  bool loding = true;
+
   getData() async {
     QuerySnapshot querySnapshot = await FirebaseFirestore.instance
         .collection("categories")
         .get();
+    loding = false;
     data.addAll(querySnapshot.docs);
     setState(() {});
   }
@@ -55,28 +57,30 @@ class _HomepageState extends State<Homepage> {
           ),
         ],
       ),
-      body: GridView.builder(
-        itemCount: data.length,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          mainAxisExtent: 200,
-        ),
-        itemBuilder: (BuildContext context, int index) {
-          return Card(
-            child: Container(
-              padding: EdgeInsets.all(15),
-
-              child: Column(
-                children: [
-                  Image.asset("images/folder.png", height: 130),
-
-                  Text("${data[index]['name']}"),
-                ],
+      body: loding == true
+          ? Center(child: CircularProgressIndicator.adaptive())
+          : GridView.builder(
+              itemCount: data.length,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisExtent: 200,
               ),
+              itemBuilder: (BuildContext context, int index) {
+                return Card(
+                  child: Container(
+                    padding: EdgeInsets.all(15),
+
+                    child: Column(
+                      children: [
+                        Image.asset("images/folder.png", height: 130),
+
+                        Text("${data[index]['name']}"),
+                      ],
+                    ),
+                  ),
+                );
+              },
             ),
-          );
-        },
-      ),
     );
   }
 }

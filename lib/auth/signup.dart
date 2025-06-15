@@ -49,6 +49,7 @@ class _SignUpState extends State<SignUp> {
                     if (val == "") {
                       return "Your username can't be empte";
                     }
+                    return null;
                   },
                   hinttext: "ُEnter Your username",
                   mycontroller: username,
@@ -64,6 +65,7 @@ class _SignUpState extends State<SignUp> {
                     if (val == "") {
                       return "Your Email can't be empte";
                     }
+                    return null;
                   },
                   hinttext: "ُEnter Your Email",
                   mycontroller: email,
@@ -79,6 +81,7 @@ class _SignUpState extends State<SignUp> {
                     if (val == "") {
                       return "Your Password can't be empte";
                     }
+                    return null;
                   },
                   hinttext: "ُEnter Your Password",
                   mycontroller: password,

@@ -38,6 +38,7 @@ class _AddCategoryState extends State<AddCategory> {
                   if (val == "") {
                     return "Your name can't be empte";
                   }
+                  return null;
                 },
                 hinttext: "enter name",
                 mycontroller: name,
