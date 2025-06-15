@@ -83,7 +83,7 @@ class _LoginState extends State<Login> {
                       return "Your passwor can't be empte";
                     }
                   },
-                  hinttext: "ُEnter Your Password",
+                  hinttext: "ُEnter Yourd Password",
                   mycontroller: password,
                 ),
                 InkWell(
