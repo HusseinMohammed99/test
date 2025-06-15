@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1063679269012",
+    "project_id": "buspay-48487",
+    "storage_bucket": "buspay-48487.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1063679269012:android:05fae852650f15046efc81",
+        "android_client_info": {
+          "package_name": "com.example.flutter_auth_cloud"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDAcTa2Zehvc22aWIrXipK_ToXZAosvk4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1063679269012:android:89069c78cebb259d6efc81",
+        "android_client_info": {
+          "package_name": "com.example.flutter_courses"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDAcTa2Zehvc22aWIrXipK_ToXZAosvk4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
