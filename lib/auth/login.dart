@@ -129,6 +129,8 @@ class _LoginState extends State<Login> {
                               email: email.text,
                               password: password.text,
                             );
+                        loding = false;
+                        setState(() {});
 
                         AwesomeDialog(
                           context: context,
@@ -137,9 +139,13 @@ class _LoginState extends State<Login> {
                           title: 'تم تسجيل الدخول بنجاح',
                           desc: 'مرحباً بك!',
                           btnOkOnPress: () {
+                            loding = false;
+                            setState(() {});
                             if (credential.user!.emailVerified) {
                               Navigator.popAndPushNamed(context, "homepage");
                             } else {
+                              loding = false;
+                              setState(() {});
                               AwesomeDialog(
                                 context: context,
                                 dialogType: DialogType.error,
@@ -165,7 +171,8 @@ class _LoginState extends State<Login> {
                           message = 'حدث خطأ: ${e.message}';
                           type = DialogType.warning;
                         }
-
+                        loding = false;
+                        setState(() {});
                         AwesomeDialog(
                           context: context,
                           dialogType: type,

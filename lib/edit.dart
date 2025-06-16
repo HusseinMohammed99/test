@@ -9,43 +9,24 @@ CollectionReference categories = FirebaseFirestore.instance.collection(
   'categories',
 );
 bool lood = false;
-// Addcategory() async {
-//   lood = true;
-//   if (formState.currentState!.validate()) {
-//     try {
-//       lood = true;
-//       setState(() {});
-//       DocumentReference respos = await categories.add({
-//         "name": name.text,
-//         "id": FirebaseAuth.instance.currentUser!.uid,
-//       });
-//       Navigator.of(
-//         context,
-//       ).pushNamedAndRemoveUntil("homepage", (route) => false);
-//     } catch (e) {
-//       print("Error$e");
-//     }
-//   }
-// }
 
-class AddCategory extends StatefulWidget {
-  const AddCategory({super.key});
+class EditCategory extends StatefulWidget {
+  final String docid;
+  final String oldname;
+  const EditCategory({super.key, required this.docid, required this.oldname});
 
   @override
-  State<AddCategory> createState() => _AddCategoryState();
+  State<EditCategory> createState() => _EditCategoryState();
 }
 
-class _AddCategoryState extends State<AddCategory> {
+class _EditCategoryState extends State<EditCategory> {
   GlobalKey<FormState> formState = GlobalKey<FormState>();
-  addcategory() async {
+  editCategory() async {
     if (formState.currentState!.validate()) {
       try {
         lood = true;
         setState(() {});
-        DocumentReference response = await categories.add({
-          "name": name.text,
-          "id": FirebaseAuth.instance.currentUser!.uid,
-        });
+        await categories.doc(widget.docid).update({"name": name.text});
         lood = false;
         Navigator.of(
           context,
@@ -54,6 +35,12 @@ class _AddCategoryState extends State<AddCategory> {
         print("Error$e");
       }
     }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    name.text = widget.oldname;
   }
 
   @override
@@ -80,9 +67,9 @@ class _AddCategoryState extends State<AddCategory> {
                     ),
                   ),
                   CustomButtonAuth(
-                    title: "Add",
+                    title: "Save",
                     onPressed: () {
-                      addcategory();
+                      editCategory();
                     },
                   ),
                 ],
